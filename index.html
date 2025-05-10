@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>حدث البناء – أفضل 3 مشتركين</title>
+  <style>
+    body {
+      background: #000;
+      color: #FFD700;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 40px;
+    }
+    img {
+      max-width: 100%;
+      border: 2px solid #FFD700;
+      border-radius: 20px;
+      margin: 20px 0;
+      transition: transform 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.03);
+    }
+    .buttons {
+      margin: 20px 0;
+    }
+    .buttons button {
+      background: #FFD700;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .buttons button:hover {
+      background: #e6c200;
+    }
+    #top-bar {
+      background: #FFD700;
+      color: #000;
+      padding: 10px;
+      font-weight: bold;
+      animation: scrollText 10s linear infinite;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    #countdown, #points {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    .qr-code {
+      margin: 20px auto;
+    }
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #FFD700;
+      color: #000;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <button class="lang-toggle" onclick="toggleLanguage()">🌐 EN</button>
+
+  <div id="top-bar" data-text-ar="📢 لا تفوّت حدث البناء – الجوائز في انتظارك!" data-text-en="📢 Don't miss the Build Event – Prizes await you!">📢 لا تفوّت حدث البناء – الجوائز في انتظارك!</div>
+  <h1 id="main-title" data-text-ar="📊 أفضل 3 مشتركين" data-text-en="📊 Top 3 Participants">📊 أفضل 3 مشتركين</h1>
+
+  <div id="countdown">⏳ جاري التحميل...</div>
+  <div id="points" data-text-ar="🔥 نقاطك الحالية: " data-text-en="🔥 Your Current Points: ">🔥 نقاطك الحالية: <span id="livePoints">0</span>
+</div>
+
+  <div style="margin: 20px 0;">
+    <label for="userIdInput" data-text-ar="🔑 أدخل رقمك التعريفي:" data-text-en="🔑 Enter your ID:" style="display: block; margin-bottom: 5px;">🔑 أدخل رقمك التعريفي:</label>
+    <input type="text" id="userIdInput" placeholder="مثلاً: ahmed123" style="padding: 8px; border-radius: 8px; width: 200px;">
+    <button onclick="fetchUserPoints()" style="margin-right: 10px; padding: 8px 15px; border-radius: 8px; background-color: #FFD700; color: #000; border: none;">عرض النقاط</button>
+    <div id="userPointsResult" style="margin-top: 10px; font-size: 18px;"></div>
+  </div>
+
+  <img id="eventImage" src="top.png" alt="Top Participants"/>
+
+  <div class="buttons">
+    <button id="shareBtn" onclick="shareEvent()" data-text-ar="🔗 مشاركة الحدث" data-text-en="🔗 Share Event">🔗 مشاركة الحدث</button>
+    <button id="downloadBtn" onclick="downloadImage()" data-text-ar="⬇️ تحميل الصورة" data-text-en="⬇️ Download Image">⬇️ تحميل الصورة</button>
+  </div>
+
+  <div class="qr-code">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://a7medras.github.io/event-page/" alt="QR Code">
+  </div>
+
+  <script>
+    let currentLang = "ar";
+
+    function toggleLanguage() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.querySelector(".lang-toggle").textContent = currentLang === "ar" ? "🌐 EN" : "🌐 AR";
+
+      document.querySelectorAll("[data-text-ar]").forEach(el => {
+        el.textContent = el.getAttribute(`data-text-${currentLang}`);
+      });
+    }
+
+    function shareEvent() {
+      const url = 'https://a7medras.github.io/event-page/';
+      if (navigator.share) {
+        navigator.share({
+          title: currentLang === "ar" ? 'حدث البناء' : 'Build Event',
+          text: currentLang === "ar" ? 'شاهد أفضل 3 مشتركين في حدث البناء!' : 'See the Top 3 Participants in the Build Event!',
+          url: url
+        });
+      } else {
+        prompt(currentLang === "ar" ? "انسخ رابط المشاركة:" : "Copy the link to share:", url);
+      }
+    }
+
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.href = 'top.png';
+      link.download = 'top_participants.png';
+      link.click();
+    }
+
+    const countdown = document.getElementById("countdown");
+    const endDate = new Date("2025-05-20T23:59:59");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+
+      if (diff <= 0) {
+        countdown.textContent = currentLang === "ar" ? "⏰ انتهى الحدث!" : "⏰ The event has ended!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.textContent = currentLang === "ar"
+        ? `⏳ ينتهي الحدث خلال: ${days}ي ${hours}س ${minutes}د ${seconds}ث`
+        : `⏳ Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    let points = 0;
+    function updatePoints() {
+      document.getElementById("livePoints").textContent = points++;
+    }
+
+    setInterval(updateCountdown, 1000);
+    setInterval(updatePoints, 3000);
+    updateCountdown();
+  
+    async function fetchUserPoints() {
+      const userId = document.getElementById("userIdInput").value.trim();
+      const resultBox = document.getElementById("userPointsResult");
+
+      if (!userId) {
+        resultBox.textContent = currentLang === "ar" ? "يرجى إدخال رقم تعريفي صحيح." : "Please enter a valid ID.";
+        return;
+      }
+
+      try {
+        const response = await fetch("points_data.json");
+        const data = await response.json();
+        if (data[userId] !== undefined) {
+          resultBox.textContent = currentLang === "ar"
+            ? `✅ نقاطك: ${data[userId]}`
+            : `✅ Your Points: ${data[userId]}`;
+        } else {
+          resultBox.textContent = currentLang === "ar"
+            ? "❌ لم يتم العثور على هذا الرقم."
+            : "❌ ID not found.";
+        }
+      } catch (error) {
+        resultBox.textContent = "⚠️ فشل في تحميل النقاط.";
+      }
+    }
+</script>
+</body>
+</html>
