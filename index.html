@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>حدث البناء – أفضل 3 مشتركين</title>
+<style>
+    body {
+      background: #000;
+      color: #FFD700;
+      font-family: 'Tajawal', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 40px;
+    }
+    img {
+      max-width: 100%;
+      border: 2px solid #FFD700;
+      border-radius: 20px;
+      margin: 20px 0;
+      transition: transform 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.03);
+    }
+    .buttons {
+      margin: 20px 0;
+    }
+    .buttons button {
+      background: #FFD700;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .buttons button:hover {
+      background: #e6c200;
+    }
+    #top-bar {
+      background: #FFD700;
+      color: #000;
+      padding: 10px;
+      font-weight: bold;
+      animation: scrollText 10s linear infinite;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    #countdown, #points {
+  background-color: #1a1a1a;
+  border-radius: 50px;
+  display: inline-block;
+  padding: 10px 30px;
+  border: 2px solid #FFD700;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    .qr-code {
+      margin: 20px auto;
+    }
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #FFD700;
+      color: #000;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<button class="lang-toggle" onclick="toggleLanguage()">🌐 EN</button>
+<div data-text-ar="📢 لا تفوّت حدث البناء – الجوائز في انتظارك!" data-text-en="📢 Don't miss the Build Event – Prizes await you!" id="top-bar">📢 لا تفوّت حدث البناء – الجوائز في انتظارك!</div>
+<h1 data-text-ar="📊 أفضل 3 مشتركين" data-text-en="📊 Top 3 Participants" id="main-title">📊 أفضل 3 مشتركين</h1>
+<div id="countdown">⏳ جاري التحميل...</div>
+<div style="margin-top: 40px;">
+<h2 data-text-ar="🎁 الجوائز" data-text-en="🎁 Prizes">🎁 الجوائز</h2>
+<table style="width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid gold; border-radius: 15px; overflow: hidden; background-color: #1e1e1e; color: gold; font-family: 'Tajawal', sans-serif;">
+<tr><th style="padding: 12px; background-color: #333; border-bottom: 1px solid gold; text-align: center;">المركز</th><th style="padding: 12px; background-color: #333; border-bottom: 1px solid gold; text-align: center;">الجائزة</th></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">🥇 الأول</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">2000 فاصوليا</td></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">🥈 الثاني</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">1500 فاصوليا</td></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">🥉 الثالث</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">1000 فاصوليا</td></tr>
+</table>
+</div>
+<div style="margin-top: 30px;">
+<h2 data-text-ar="📌 مركز النقاط" data-text-en="📌 Rank by Points">📌 مركز النقاط</h2>
+<table style="width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid gold; border-radius: 15px; overflow: hidden; background-color: #1e1e1e; color: gold; font-family: 'Tajawal', sans-serif;">
+<tr><th style="padding: 12px; background-color: #333; border-bottom: 1px solid gold; text-align: center;">الفئة</th><th style="padding: 12px; background-color: #333; border-bottom: 1px solid gold; text-align: center;">من النقاط</th></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">مبتدئ</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">أقل من 500</td></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">متوسط</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">من 500 إلى 1000</td></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">محترف</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">أكثر من 1000</td></tr>
+</table>
+</div>
+<div style="margin-top: 30px;">
+<h2 data-text-ar="⚙️ نظام النقاط" data-text-en="⚙️ Point System">⚙️ نظام النقاط</h2>
+<table style="width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid gold; border-radius: 15px; overflow: hidden; background-color: #1e1e1e; color: gold; font-family: 'Tajawal', sans-serif;">
+<tr><th style="padding: 12px; background-color: #333; border-bottom: 1px solid gold; text-align: center;">النشاط</th><th style="padding: 12px; background-color: #333; border-bottom: 1px solid gold; text-align: center;">النقاط</th></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">⏰ كل ساعة بث مباشر</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">1 نقطة</td></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">🫘 كل فاصوليا محصّلة</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">1 نقطة</td></tr>
+<tr><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">📩 كل دعوة مقبولة (مذيع جديد)</td><td style="padding: 12px; text-align: center; border-bottom: 1px solid #444;">50 نقطة</td></tr>
+</table>
+</div>
+<div data-text-ar="🔥 نقاطك الحالية: " data-text-en="🔥 Your Current Points: " id="points">🔥 نقاطك الحالية: <span id="livePoints">0</span>
+</div>
+<div style="margin: 20px 0;">
+<label data-text-ar="🔑 أدخل رقمك التعريفي:" data-text-en="🔑 Enter your ID:" for="userIdInput" style="display: block; margin-bottom: 5px;">🔑 أدخل رقمك التعريفي:</label>
+<input id="userIdInput" placeholder="مثلاً: ahmed123" style="padding: 8px; border-radius: 8px; width: 200px;" type="text"/>
+<button onclick="fetchUserPoints()" style="margin-right: 10px; padding: 8px 15px; border-radius: 8px; background-color: #FFD700; color: #000; border: none;">عرض النقاط</button>
+<div id="userPointsResult" style="margin-top: 10px; font-size: 18px;"></div>
+</div>
+<div style="margin-top: 40px;">
+<h2 data-text-ar="🏆 أعلى 10 مشاركين" id="top10Header">
+    🏆 أعلى 10 مشاركين
+    <button data-text-ar="🔄 تحديث" data-text-en="🔄 Refresh" onclick="loadTop10()" style="margin-right: 10px; font-size: 14px; padding: 5px 12px; border-radius: 8px; background-color: #FFD700; color: #000; border: none; cursor: pointer;">🔄 تحديث</button>
+ data-text-en="🏆 Top 10 Participants"&gt;🏆 أعلى 10 مشاركين</h2>
+<ol id="top10List" style="list-style-position: inside; font-size: 18px; line-height: 1.8;"></ol>
+</div>
+<img alt="Top Participants" id="eventImage" src="top.png"/>
+<div class="buttons">
+<button data-text-ar="🔗 مشاركة الحدث" data-text-en="🔗 Share Event" id="shareBtn" onclick="shareEvent()">🔗 مشاركة الحدث</button>
+<button data-text-ar="⬇️ تحميل الصورة" data-text-en="⬇️ Download Image" id="downloadBtn" onclick="downloadImage()">⬇️ تحميل الصورة</button>
+</div>
+<div class="qr-code">
+<img alt="QR Code" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&amp;data=https://a7medras.github.io/event-page/"/>
+</div>
+<script>
+    let currentLang = "ar";
+
+    function toggleLanguage() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.querySelector(".lang-toggle").textContent = currentLang === "ar" ? "🌐 EN" : "🌐 AR";
+
+      document.querySelectorAll("[data-text-ar]").forEach(el => {
+        el.textContent = el.getAttribute(`data-text-${currentLang}`);
+      });
+    }
+
+    function shareEvent() {
+      const url = 'https://a7medras.github.io/event-page/';
+      if (navigator.share) {
+        navigator.share({
+          title: currentLang === "ar" ? 'حدث البناء' : 'Build Event',
+          text: currentLang === "ar" ? 'شاهد أفضل 3 مشتركين في حدث البناء!' : 'See the Top 3 Participants in the Build Event!',
+          url: url
+        });
+      } else {
+        prompt(currentLang === "ar" ? "انسخ رابط المشاركة:" : "Copy the link to share:", url);
+      }
+    }
+
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.href = 'top.png';
+      link.download = 'top_participants.png';
+      link.click();
+    }
+
+    const countdown = document.getElementById("countdown");
+    const endDate = new Date("2025-05-20T23:59:59");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+
+      if (diff <= 0) {
+        countdown.textContent = currentLang === "ar" ? "⏰ انتهى الحدث!" : "⏰ The event has ended!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.textContent = currentLang === "ar"
+        ? `⏳ ينتهي الحدث خلال: ${days}ي ${hours}س ${minutes}د ${seconds}ث`
+        : `⏳ Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    let points = 0;
+    function updatePoints() {
+      document.getElementById("livePoints").textContent = points++;
+    }
+
+    setInterval(updateCountdown, 1000);
+    setInterval(updatePoints, 3000);
+    updateCountdown();
+  
+    async function fetchUserPoints() {
+      const userId = document.getElementById("userIdInput").value.trim();
+      const resultBox = document.getElementById("userPointsResult");
+
+      if (!userId) {
+        resultBox.textContent = currentLang === "ar" ? "يرجى إدخال رقم تعريفي صحيح." : "Please enter a valid ID.";
+        return;
+      }
+
+      try {
+        const response = await fetch("points_data.json");
+        const data = await response.json();
+        if (data[userId] !== undefined) {
+          resultBox.textContent = currentLang === "ar"
+            ? `✅ نقاطك: ${data[userId]}`
+            : `✅ Your Points: ${data[userId]}`;
+        } else {
+          resultBox.textContent = currentLang === "ar"
+            ? "❌ لم يتم العثور على هذا الرقم."
+            : "❌ ID not found.";
+        }
+      } catch (error) {
+        resultBox.textContent = "⚠️ فشل في تحميل النقاط.";
+      }
+    }
+
+    async function loadTop10() {
+      try {
+        const response = await fetch("points_data.json");
+        const data = await response.json();
+
+        const sorted = Object.entries(data)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 10);
+
+        const list = document.getElementById("top10List");
+        
+list.style.opacity = 0.5;
+list.innerHTML = "";
+
+
+        
+setTimeout(() => {
+  list.style.opacity = 1;
+}, 500);
+sorted.forEach(([id, points], index) => {
+
+          let medal = "";
+          if (index === 0) medal = "🥇 ";
+          else if (index === 1) medal = "🥈 ";
+          else if (index === 2) medal = "🥉 ";
+          list.innerHTML += `<li>${medal}${id} – ${points}</li>`;
+        });
+      } catch (e) {
+        document.getElementById("top10List").innerHTML = "<li>⚠️ تعذر تحميل أفضل المشاركين.</li>";
+      }
+    }
+
+    
+window.addEventListener("DOMContentLoaded", loadTop10);
+setTimeout(() => { document.getElementById("top10List").style.opacity = 1; }, 500);
+
+</script>
+
+<div class="top10-section" style="margin-top: 40px;">
+  <h2 style="color: gold; text-align: center;">🏆 أعلى 10 مشاركين</h2>
+  <div id="top10-cards" style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px;">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; max-width: 500px; background-color: #111; border: 2px solid gold; border-radius: 50px; padding: 10px 20px; box-shadow: 0 0 15px gold;">
+      <img src="https://via.placeholder.com/50" alt="mona_gold" style="border-radius: 50%;">
+      <span style="flex-grow: 1; text-align: center; color: white; font-size: 18px;">🥇 mona_gold</span>
+      <span style="color: gold; font-weight: bold; font-size: 18px;">1890</span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; max-width: 500px; background-color: #111; border: 2px solid silver; border-radius: 50px; padding: 10px 20px; box-shadow: 0 0 10px silver;">
+      <img src="https://via.placeholder.com/50" alt="reem789" style="border-radius: 50%;">
+      <span style="flex-grow: 1; text-align: center; color: white; font-size: 18px;">🥈 reem789</span>
+      <span style="color: silver; font-weight: bold; font-size: 18px;">1560</span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; max-width: 500px; background-color: #111; border: 2px solid #cd7f32; border-radius: 50px; padding: 10px 20px; box-shadow: 0 0 10px #cd7f32;">
+      <img src="https://via.placeholder.com/50" alt="ahmed123" style="border-radius: 50%;">
+      <span style="flex-grow: 1; text-align: center; color: white; font-size: 18px;">🥉 ahmed123</span>
+      <span style="color: #cd7f32; font-weight: bold; font-size: 18px;">1350</span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; max-width: 500px; background-color: #111; border: 2px solid gray; border-radius: 50px; padding: 10px 20px;">
+      <img src="https://via.placeholder.com/50" alt="nour456" style="border-radius: 50%;">
+      <span style="flex-grow: 1; text-align: center; color: white; font-size: 18px;">nour456</span>
+      <span style="color: white; font-weight: bold; font-size: 18px;">870</span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; max-width: 500px; background-color: #111; border: 2px solid gray; border-radius: 50px; padding: 10px 20px;">
+      <img src="https://via.placeholder.com/50" alt="zeid2025" style="border-radius: 50%;">
+      <span style="flex-grow: 1; text-align: center; color: white; font-size: 18px;">zeid2025</span>
+      <span style="color: white; font-weight: bold; font-size: 18px;">410</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
