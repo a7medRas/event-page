@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حدث البناء</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #FFD700;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+    }
+    .top-title {
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 20px 0 10px;
+    }
+    .top-participants {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+    }
+    .participant {
+      background-color: #111;
+      border: 2px solid #FFD700;
+      border-radius: 30px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 0 10px #FFD700;
+    }
+    .participant img {
+      width: 100px;
+      border-radius: 50%;
+    }
+    .participant .name {
+      font-size: 1.3rem;
+      margin: 10px 0 5px;
+    }
+    .participant .points {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .points-system, .prizes {
+      margin: 40px auto;
+      max-width: 600px;
+      background: #111;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 10px #FFD700;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #fff;
+      font-size: 1rem;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #FFD700;
+    }
+    th {
+      background-color: #222;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-title">📊 أفضل 3 مشتركين</div>
+
+  <div class="top-participants">
+    <div class="participant">
+      <img src="https://i.imgur.com/1Q9Z1Zm.png" alt="David" />
+      <div class="name">David</div>
+      <div class="points">1890 نقطة</div>
+    </div>
+    <div class="participant">
+      <img src="https://i.imgur.com/Id6Pz3T.png" alt="Sarah" />
+      <div class="name">Sarah</div>
+      <div class="points">1560 نقطة</div>
+    </div>
+    <div class="participant">
+      <img src="https://i.imgur.com/O8dHgHC.png" alt="Mark" />
+      <div class="name">Mark</div>
+      <div class="points">1350 نقطة</div>
+    </div>
+  </div>
+
+  <div class="points-system">
+    <h2>📋 نظام النقاط</h2>
+    <table>
+      <tr><th>النشاط</th><th>النقاط</th></tr>
+      <tr><td>كل ساعة بث مباشر</td><td>1 نقطة</td></tr>
+      <tr><td>كل فاصوليا محصّلة</td><td>1 نقطة</td></tr>
+      <tr><td>كل دعوة مقبولة (مذيع جديد)</td><td>50 نقطة</td></tr>
+    </table>
+  </div>
+
+  <div class="prizes">
+    <h2>🏆 الجوائز</h2>
+    <table>
+      <tr><th>المركز</th><th>الجائزة</th></tr>
+      <tr><td>🥇 المركز الأول</td><td>2000 فاصوليا</td></tr>
+      <tr><td>🥈 المركز الثاني</td><td>1500 فاصوليا</td></tr>
+      <tr><td>🥉 المركز الثالث</td><td>1000 فاصوليا</td></tr>
+      <tr><td>🎁 جائزة تحفيزية</td><td>لكل من يجمع أكثر من 1000 نقطة!</td></tr>
+    </table>
+  </div>
+
+</body>
+</html>
