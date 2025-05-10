@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>حدث البناء – أفضل 3 مشتركين</title>
+  <style>
+    body {
+      background: #000;
+      color: #FFD700;
+      font-family: 'Tajawal', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 40px;
+    }
+    img {
+      max-width: 100%;
+      border: 2px solid #FFD700;
+      border-radius: 20px;
+      margin: 20px 0;
+      transition: transform 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.03);
+    }
+    .buttons {
+      margin: 20px 0;
+    }
+    .buttons button {
+      background: #FFD700;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .buttons button:hover {
+      background: #e6c200;
+    }
+    #top-bar {
+      background: #FFD700;
+      color: #000;
+      padding: 10px;
+      font-weight: bold;
+      animation: scrollText 10s linear infinite;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    #countdown, #points {
+  background-color: #1a1a1a;
+  border-radius: 50px;
+  display: inline-block;
+  padding: 10px 30px;
+  border: 2px solid #FFD700;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    .qr-code {
+      margin: 20px auto;
+    }
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #FFD700;
+      color: #000;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <button class="lang-toggle" onclick="toggleLanguage()">🌐 EN</button>
+
+  <div id="top-bar" data-text-ar="📢 لا تفوّت حدث البناء – الجوائز في انتظارك!" data-text-en="📢 Don't miss the Build Event – Prizes await you!">📢 لا تفوّت حدث البناء – الجوائز في انتظارك!</div>
+  <h1 id="main-title" data-text-ar="📊 أفضل 3 مشتركين" data-text-en="📊 Top 3 Participants">📊 أفضل 3 مشتركين</h1>
+
+  <div id="countdown">⏳ جاري التحميل...</div>
+  
+  <div style="margin-top: 40px;">
+    <h2 data-text-ar="🎁 الجوائز" data-text-en="🎁 Prizes">🎁 الجوائز</h2>
+    <table style="margin: 0 auto; border-collapse: collapse; color: #FFD700;">
+      <tr><th>المركز</th><th>الجائزة</th></tr>
+      <tr><td>🥇 الأول</td><td>2000 فاصوليا</td></tr>
+      <tr><td>🥈 الثاني</td><td>1500 فاصوليا</td></tr>
+      <tr><td>🥉 الثالث</td><td>1000 فاصوليا</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 data-text-ar="📌 مركز النقاط" data-text-en="📌 Rank by Points">📌 مركز النقاط</h2>
+    <table style="margin: 0 auto; border-collapse: collapse; color: #FFD700;">
+      <tr><th>الفئة</th><th>من النقاط</th></tr>
+      <tr><td>مبتدئ</td><td>أقل من 500</td></tr>
+      <tr><td>متوسط</td><td>من 500 إلى 1000</td></tr>
+      <tr><td>محترف</td><td>أكثر من 1000</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h2 data-text-ar="⚙️ نظام النقاط" data-text-en="⚙️ Point System">⚙️ نظام النقاط</h2>
+    <table style="margin: 0 auto; border-collapse: collapse; color: #FFD700;">
+      <tr><th>النشاط</th><th>النقاط</th></tr>
+      <tr><td>⏰ كل ساعة بث مباشر</td><td>1 نقطة</td></tr>
+      <tr><td>🫘 كل فاصوليا محصّلة</td><td>1 نقطة</td></tr>
+      <tr><td>📩 كل دعوة مقبولة (مذيع جديد)</td><td>50 نقطة</td></tr>
+    </table>
+  </div>
+
+  <div id="points" data-text-ar="🔥 نقاطك الحالية: " data-text-en="🔥 Your Current Points: ">🔥 نقاطك الحالية: <span id="livePoints">0</span>
+</div>
+
+  <div style="margin: 20px 0;">
+    <label for="userIdInput" data-text-ar="🔑 أدخل رقمك التعريفي:" data-text-en="🔑 Enter your ID:" style="display: block; margin-bottom: 5px;">🔑 أدخل رقمك التعريفي:</label>
+    <input type="text" id="userIdInput" placeholder="مثلاً: ahmed123" style="padding: 8px; border-radius: 8px; width: 200px;">
+    <button onclick="fetchUserPoints()" style="margin-right: 10px; padding: 8px 15px; border-radius: 8px; background-color: #FFD700; color: #000; border: none;">عرض النقاط</button>
+    <div id="userPointsResult" style="margin-top: 10px; font-size: 18px;"></div>
+  </div>
+  <div style="margin-top: 40px;">
+    
+<h2 data-text-ar="🏆 أعلى 10 مشاركين"
+    id="top10Header">
+    🏆 أعلى 10 مشاركين
+    <button onclick="loadTop10()" style='margin-right: 10px; font-size: 14px; padding: 5px 12px; border-radius: 8px; background-color: #FFD700; color: #000; border: none; cursor: pointer;' data-text-ar="🔄 تحديث" data-text-en="🔄 Refresh">🔄 تحديث</button>
+ data-text-en="🏆 Top 10 Participants">🏆 أعلى 10 مشاركين</h2>
+    <ol id="top10List" style="list-style-position: inside; font-size: 18px; line-height: 1.8;"></ol>
+  </div>
+
+  <img id="eventImage" src="top.png" alt="Top Participants"/>
+
+  <div class="buttons">
+    <button id="shareBtn" onclick="shareEvent()" data-text-ar="🔗 مشاركة الحدث" data-text-en="🔗 Share Event">🔗 مشاركة الحدث</button>
+    <button id="downloadBtn" onclick="downloadImage()" data-text-ar="⬇️ تحميل الصورة" data-text-en="⬇️ Download Image">⬇️ تحميل الصورة</button>
+  </div>
+
+  <div class="qr-code">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://a7medras.github.io/event-page/" alt="QR Code">
+  </div>
+
+  <script>
+    let currentLang = "ar";
+
+    function toggleLanguage() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.querySelector(".lang-toggle").textContent = currentLang === "ar" ? "🌐 EN" : "🌐 AR";
+
+      document.querySelectorAll("[data-text-ar]").forEach(el => {
+        el.textContent = el.getAttribute(`data-text-${currentLang}`);
+      });
+    }
+
+    function shareEvent() {
+      const url = 'https://a7medras.github.io/event-page/';
+      if (navigator.share) {
+        navigator.share({
+          title: currentLang === "ar" ? 'حدث البناء' : 'Build Event',
+          text: currentLang === "ar" ? 'شاهد أفضل 3 مشتركين في حدث البناء!' : 'See the Top 3 Participants in the Build Event!',
+          url: url
+        });
+      } else {
+        prompt(currentLang === "ar" ? "انسخ رابط المشاركة:" : "Copy the link to share:", url);
+      }
+    }
+
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.href = 'top.png';
+      link.download = 'top_participants.png';
+      link.click();
+    }
+
+    const countdown = document.getElementById("countdown");
+    const endDate = new Date("2025-05-20T23:59:59");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+
+      if (diff <= 0) {
+        countdown.textContent = currentLang === "ar" ? "⏰ انتهى الحدث!" : "⏰ The event has ended!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.textContent = currentLang === "ar"
+        ? `⏳ ينتهي الحدث خلال: ${days}ي ${hours}س ${minutes}د ${seconds}ث`
+        : `⏳ Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    let points = 0;
+    function updatePoints() {
+      document.getElementById("livePoints").textContent = points++;
+    }
+
+    setInterval(updateCountdown, 1000);
+    setInterval(updatePoints, 3000);
+    updateCountdown();
+  
+    async function fetchUserPoints() {
+      const userId = document.getElementById("userIdInput").value.trim();
+      const resultBox = document.getElementById("userPointsResult");
+
+      if (!userId) {
+        resultBox.textContent = currentLang === "ar" ? "يرجى إدخال رقم تعريفي صحيح." : "Please enter a valid ID.";
+        return;
+      }
+
+      try {
+        const response = await fetch("points_data.json");
+        const data = await response.json();
+        if (data[userId] !== undefined) {
+          resultBox.textContent = currentLang === "ar"
+            ? `✅ نقاطك: ${data[userId]}`
+            : `✅ Your Points: ${data[userId]}`;
+        } else {
+          resultBox.textContent = currentLang === "ar"
+            ? "❌ لم يتم العثور على هذا الرقم."
+            : "❌ ID not found.";
+        }
+      } catch (error) {
+        resultBox.textContent = "⚠️ فشل في تحميل النقاط.";
+      }
+    }
+
+    async function loadTop10() {
+      try {
+        const response = await fetch("points_data.json");
+        const data = await response.json();
+
+        const sorted = Object.entries(data)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 10);
+
+        const list = document.getElementById("top10List");
+        
+list.style.opacity = 0.5;
+list.innerHTML = "";
+
+
+        
+setTimeout(() => {
+  list.style.opacity = 1;
+}, 500);
+sorted.forEach(([id, points], index) => {
+
+          let medal = "";
+          if (index === 0) medal = "🥇 ";
+          else if (index === 1) medal = "🥈 ";
+          else if (index === 2) medal = "🥉 ";
+          list.innerHTML += `<li>${medal}${id} – ${points}</li>`;
+        });
+      } catch (e) {
+        document.getElementById("top10List").innerHTML = "<li>⚠️ تعذر تحميل أفضل المشاركين.</li>";
+      }
+    }
+
+    
+window.addEventListener("DOMContentLoaded", loadTop10);
+setTimeout(() => { document.getElementById("top10List").style.opacity = 1; }, 500);
+
+</script>
+</body>
+</html>
