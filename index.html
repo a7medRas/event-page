@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>حدث البناء</title>
+</head>
+<body>
+  <h1>🚀 حدث البناء</h1>
+  <button onclick="toggleLang()">🌐 تغيير اللغة</button>
+
+  <script>
+    let currentLang = "ar";
+
+    function toggleLang() {
+      const arMap = {
+        "🚀 Build Event": "🚀 حدث البناء"
+      };
+      const enMap = {
+        "🚀 حدث البناء": "🚀 Build Event"
+      };
+      const map = currentLang === "ar" ? enMap : arMap;
+
+      document.querySelectorAll("h1, h2, button, div, td, th").forEach(el => {
+        const text = el.innerText.trim();
+        if (map[text]) el.innerText = map[text];
+      });
+
+      currentLang = currentLang === "ar" ? "en" : "ar";
+    }
+  </script>
+</body>
+</html>
