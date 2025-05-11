@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حدث البناء</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #3e2723;
+      color: white;
+    }
+    header, .section {
+      text-align: center;
+      padding: 20px;
+    }
+    header img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+    }
+    .title {
+      font-size: 40px;
+      color: gold;
+      margin: 20px 0 10px;
+    }
+    .countdown-container {
+      border: 4px solid gold;
+      border-radius: 50px;
+      display: inline-block;
+      padding: 10px 30px;
+      font-size: 24px;
+      margin: 10px auto;
+    }
+    .event-dates {
+      margin-top: 10px;
+      font-size: 20px;
+      color: #f5d142;
+    }
+    .gold-button {
+      background-color: gold;
+      color: #3e2723;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      margin: 20px auto;
+      display: inline-block;
+      cursor: pointer;
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #4e342e;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 15px;
+      border-bottom: 1px solid gold;
+      font-size: 18px;
+    }
+    th {
+      background-color: #3e2723;
+      color: gold;
+    }
+    .top-participants {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 20px 0;
+    }
+    .top-card {
+      background-color: #4e342e;
+      border: 2px solid gold;
+      border-radius: 30px;
+      width: 200px;
+      text-align: center;
+      padding: 10px;
+    }
+    .top-card img {
+      width: 100%;
+      border-radius: 30px 30px 0 0;
+    }
+    .participant-name {
+      font-size: 20px;
+      margin-top: 10px;
+      color: gold;
+    }
+    .participant-score {
+      font-size: 18px;
+      color: white;
+    }
+    .marquee-bar {
+      background-color: gold;
+      color: #3e2723;
+      padding: 10px;
+      font-weight: bold;
+    }
+    .welcome-message {
+      background-color: gold;
+      color: #3e2723;
+      font-size: 22px;
+      margin: 15px auto;
+      width: 80%;
+      padding: 10px;
+      border-radius: 20px;
+      display: none;
+    }
+    #sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100%;
+      background: #4e342e;
+      color: white;
+      padding: 20px;
+      box-shadow: -3px 0 5px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
+    }
+    #sidebar.open {
+      right: 0;
+    }
+    .sidebar-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: gold;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body onload="showWelcomeOnce()">
+  <div class="marquee-bar">
+    <marquee>🎉 لا تفوّت الفرصة – الجوائز تنتظرك! انطلق الآن! 🎉</marquee>
+  </div>
+
+  <div class="sidebar-toggle" onclick="toggleSidebar()">📋</div>
+
+  <div id="sidebar">
+    <button onclick="toggleSidebar()">❌ إغلاق</button>
+    <ul>
+      <li><b>❓ الأسئلة الشائعة</b><br>ستجد هنا معلومات حول كيفية جمع النقاط.</li>
+      <li><b>💬 خدمة العملاء</b><br>راسلنا عبر البريد أو الدردشة المباشرة.</li>
+      <li><b>🌐 تغيير اللغة</b><br><button onclick="toggleLang()">Change Language</button></li>
+    </ul>
+  </div>
+
+  <header>
+    <img src="https://a7medras.github.io/event-page/top.png" alt="حدث البناء">
+  </header>
+
+  <div class="section">
+    <h1 class="title">🚀 حدث البناء</h1>
+
+    <div class="countdown-container" id="countdown">00:00:00</div>
+
+    <div class="event-dates">📅 يبدأ الحدث: 15.05 — ينتهي: 20.05</div>
+
+    <button class="gold-button">📣 شارك الآن</button>
+  </div>
+
+  <div class="section">
+    <h2 class="title">📋 نظام النقاط</h2>
+    <table>
+      <tr><th>النشاط</th><th>النقاط</th></tr>
+      <tr><td>كل ساعة بث مباشر</td><td>1 نقطة</td></tr>
+      <tr><td>كل فاصوليا محصلة</td><td>1 نقطة</td></tr>
+      <tr><td>كل دعوة مقبولة (مذيع جديد)</td><td>50 نقطة</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2 class="title">🏆 الجوائز</h2>
+    <table>
+      <tr><th>الترتيب</th><th>الجائزة</th></tr>
+      <tr><td>🥇 المركز الأول</td><td>2000 فاصوليا</td></tr>
+      <tr><td>🥈 المركز الثاني</td><td>1500 فاصوليا</td></tr>
+      <tr><td>🥉 المركز الثالث</td><td>1000 فاصوليا</td></tr>
+      <tr><td>🎁 لكل من يجمع أكثر من 1000 نقطة</td><td>جائزة تحفيزية</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2 class="title">📊 أفضل 3 مشتركين</h2>
+    <div class="top-participants">
+      <div class="top-card"><img src="https://i.pravatar.cc/200?img=3"><div class="participant-name">Mona</div><div class="participant-score">1890 نقطة</div></div>
+      <div class="top-card"><img src="https://i.pravatar.cc/200?img=5"><div class="participant-name">Reem</div><div class="participant-score">1560 نقطة</div></div>
+      <div class="top-card"><img src="https://i.pravatar.cc/200?img=8"><div class="participant-name">Ahmed</div><div class="participant-score">1350 نقطة</div></div>
+    </div>
+  </div>
+
+  <div class="welcome-message" id="welcome">
+    🎉 أهلاً بك في حدث البناء! استعد للفوز الكبير 🎉
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("open");
+    }
+
+    function toggleLang() {
+      alert("🚧 لم يتم تفعيل دعم اللغة بعد.");
+    }
+
+    function showWelcomeOnce() {
+      if (!localStorage.getItem("welcomed")) {
+        document.getElementById("welcome").style.display = "block";
+        localStorage.setItem("welcomed", "yes");
+        setTimeout(() => document.getElementById("welcome").style.display = "none", 4000);
+      }
+    }
+
+    // Countdown Logic
+    const target = new Date("2025-05-20T00:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      let diff = target - now;
+      if (diff < 0) return;
+      let d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      let h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      let s = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerText = `${d}d ${h}h ${m}m ${s}s`;
+    }, 1000);
+  </script>
+
+  <div class="section">
+    <h2 class="title">🏅 أعلى 10 مشاركين</h2>
+    <div style="display: flex; flex-direction: column; gap: 15px; max-width: 800px; margin: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; background-color: #4e342e; border: 2px solid gold; border-radius: 40px; padding: 10px 20px;">
+        <img src="https://i.pravatar.cc/100?img=11" style="width: 50px; height: 50px; border-radius: 50%;">
+        <div style="flex-grow: 1; margin-right: 15px; color: gold; font-size: 18px; text-align: right;">nour456</div>
+        <div style="color: white; font-weight: bold;">870</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background-color: #4e342e; border: 2px solid gold; border-radius: 40px; padding: 10px 20px;">
+        <img src="https://i.pravatar.cc/100?img=12" style="width: 50px; height: 50px; border-radius: 50%;">
+        <div style="flex-grow: 1; margin-right: 15px; color: gold; font-size: 18px; text-align: right;">zeid2025</div>
+        <div style="color: white; font-weight: bold;">410</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background-color: #4e342e; border: 2px solid gold; border-radius: 40px; padding: 10px 20px;">
+        <img src="https://i.pravatar.cc/100?img=13" style="width: 50px; height: 50px; border-radius: 50%;">
+        <div style="flex-grow: 1; margin-right: 15px; color: gold; font-size: 18px; text-align: right;">sara_live</div>
+        <div style="color: white; font-weight: bold;">300</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background-color: #4e342e; border: 2px solid gold; border-radius: 40px; padding: 10px 20px;">
+        <img src="https://i.pravatar.cc/100?img=14" style="width: 50px; height: 50px; border-radius: 50%;">
+        <div style="flex-grow: 1; margin-right: 15px; color: gold; font-size: 18px; text-align: right;">tamer_dev</div>
+        <div style="color: white; font-weight: bold;">280</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background-color: #4e342e; border: 2px solid gold; border-radius: 40px; padding: 10px 20px;">
+        <img src="https://i.pravatar.cc/100?img=15" style="width: 50px; height: 50px; border-radius: 50%;">
+        <div style="flex-grow: 1; margin-right: 15px; color: gold; font-size: 18px; text-align: right;">mohamedx</div>
+        <div style="color: white; font-weight: bold;">260</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background-color: #4e342e; border: 2px solid gold; border-radius: 40px; padding: 10px 20px;">
+        <img src="https://i.pravatar.cc/100?img=16" style="width: 50px; height: 50px; border-radius: 50%;">
+        <div style="flex-grow: 1; margin-right: 15px; color: gold; font-size: 18px; text-align: right;">dina_star</div>
+        <div style="color: white; font-weight: bold;">240</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background-color: #4e342e; border: 2px solid gold; border-radius: 40px; padding: 10px 20px;">
+        <img src="https://i.pravatar.cc/100?img=17" style="width: 50px; height: 50px; border-radius: 50%;">
+        <div style="flex-grow: 1; margin-right: 15px; color: gold; font-size: 18px; text-align: right;">karim_pro</div>
+        <div style="color: white; font-weight: bold;">200</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
