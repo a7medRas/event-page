@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<title>حدث البناء</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #3e2723;
+      color: #FFD700;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .header-image {
+      margin-top: 70px;
+    }
+    .header-image img {
+      max-width: 100%;
+      height: auto;
+    }
+    h1, h2 {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      background: linear-gradient(to right, gold, #fff700, gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite linear;
+    }
+    @keyframes shine {
+      0% { background-position: 0%;}
+      100% { background-position: 200%;}
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 40px;
+      overflow: hidden;
+      background-color: #4e342e;
+      color: gold;
+      box-shadow: 0 0 10px gold;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #FFD700;
+    }
+    .participants {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .participant-card {
+      background-color: #5d4037;
+      border: 2px solid gold;
+      border-radius: 40px;
+      padding: 15px;
+      width: 300px;
+      color: gold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .participant-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    .info {
+      flex: 1;
+      text-align: right;
+      margin-right: 15px;
+    }
+  </style>
+</head>
+<body>
+<div class="header-image">
+<img alt="حدث البناء" src="header-banner.png"/>
+</div>
+<div class="header-image"><img alt="حدث البناء" src="header-banner.png"/></div>
+<div style="text-align:center; margin-top: 70px;">
+  <img src="header-banner.png" alt="حدث البناء" style="max-width: 100%; height: auto;" />
+</div>
+
+<h1>🚀 حدث البناء</h1>
+<h2>📋 نظام النقاط</h2>
+<table>
+<tr><th>النشاط</th><th>النقاط</th></tr>
+<tr><td>كل ساعة بث مباشر</td><td>1 نقطة</td></tr>
+<tr><td>كل فاصوليا محصّلة</td><td>1 نقطة</td></tr>
+<tr><td>كل دعوة مقبولة (مذيع جديد)</td><td>50 نقطة</td></tr>
+</table>
+<h2>🏆 الجوائز</h2>
+<table>
+<tr><th>المركز</th><th>الجائزة</th></tr>
+<tr><td>🥇 المركز الأول</td><td>2000 فاصوليا</td></tr>
+<tr><td>🥈 المركز الثاني</td><td>1500 فاصوليا</td></tr>
+<tr><td>🥉 المركز الثالث</td><td>1000 فاصوليا</td></tr>
+<tr><td>🎁 جائزة تحفيزية</td><td>لمن يجمع أكثر من 1000 نقطة</td></tr>
+</table>
+<h2>📊 أفضل 3 مشتركين</h2>
+<div class="participants">
+<div class="participant-card">
+<img alt="David" src="https://i.ibb.co/zrm7fpR/top1.png"/>
+<div class="info">
+<div>David</div>
+<div>1890 نقطة</div>
+</div>
+</div>
+<div class="participant-card">
+<img alt="Sarah" src="https://i.ibb.co/B3ZvtZq/top2.png"/>
+<div class="info">
+<div>Sarah</div>
+<div>1560 نقطة</div>
+</div>
+</div>
+<div class="participant-card">
+<img alt="Mark" src="https://i.ibb.co/NtftK1h/top3.png"/>
+<div class="info">
+<div>Mark</div>
+<div>1350 نقطة</div>
+</div>
+</div>
+</div>
+</body>
+</html>
