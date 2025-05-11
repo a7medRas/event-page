@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>حدث البناء</title>
+  <style>
+    body {
+      background-color: #3e2723;
+      color: white;
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .header-image {
+      margin-top: 20px;
+    }
+    .header-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: gold;
+      margin: 30px 0 10px;
+    }
+    .countdown {
+      background: #4e342e;
+      border: 2px solid gold;
+      border-radius: 50px;
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    .gold-box {
+      background-color: #4e342e;
+      border: 2px solid gold;
+      border-radius: 20px;
+      margin: 20px auto;
+      padding: 15px;
+      width: 90%;
+      max-width: 800px;
+    }
+    .gold-box h2 {
+      color: gold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid gold;
+    }
+    th {
+      background-color: #3e2723;
+      color: gold;
+    }
+    .top10 {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .top10-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #4e342e;
+      border: 2px solid gold;
+      border-radius: 40px;
+      padding: 10px 20px;
+    }
+    .top10-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .top10-item .name {
+      flex-grow: 1;
+      margin-right: 15px;
+      text-align: right;
+      color: gold;
+      font-size: 18px;
+    }
+    .top10-item .score {
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-image">
+    <img src="event-header.png" alt="حدث البناء" />
+  </div>
+
+  <h1>🚀 حدث البناء</h1>
+
+  <div class="countdown" id="countdown">00:00:00</div>
+  <div style="margin: 10px; color: #ffeb3b;">📅 يبدأ الحدث: 15.05 — ينتهي: 20.05</div>
+
+  <div class="gold-box">
+    <h2>📋 نظام النقاط</h2>
+    <table>
+      <tr><th>النشاط</th><th>النقاط</th></tr>
+      <tr><td>كل ساعة بث مباشر</td><td>1 نقطة</td></tr>
+      <tr><td>كل فاصوليا محصّلة</td><td>1 نقطة</td></tr>
+      <tr><td>كل دعوة مقبولة (مذيع جديد)</td><td>50 نقطة</td></tr>
+    </table>
+  </div>
+
+  <div class="gold-box">
+    <h2>🏆 الجوائز</h2>
+    <table>
+      <tr><td>🥇 المركز الأول</td><td>2000 فاصوليا</td></tr>
+      <tr><td>🥈 المركز الثاني</td><td>1500 فاصوليا</td></tr>
+      <tr><td>🥉 المركز الثالث</td><td>1000 فاصوليا</td></tr>
+      <tr><td colspan="2">🎁 جائزة تحفيزية لمن يجمع أكثر من 1000 نقطة</td></tr>
+    </table>
+  </div>
+
+  <div class="gold-box">
+    <h2>🏅 أعلى 10 مشاركين</h2>
+    <div class="top10">
+      <div class="top10-item"><img src="https://i.pravatar.cc/100?img=1"><div class="name">nour456</div><div class="score">870</div></div>
+      <div class="top10-item"><img src="https://i.pravatar.cc/100?img=2"><div class="name">zeid2025</div><div class="score">410</div></div>
+      <div class="top10-item"><img src="https://i.pravatar.cc/100?img=3"><div class="name">sara_live</div><div class="score">300</div></div>
+      <div class="top10-item"><img src="https://i.pravatar.cc/100?img=4"><div class="name">tamer_dev</div><div class="score">280</div></div>
+      <div class="top10-item"><img src="https://i.pravatar.cc/100?img=5"><div class="name">mohamedx</div><div class="score">260</div></div>
+      <div class="top10-item"><img src="https://i.pravatar.cc/100?img=6"><div class="name">dina_star</div><div class="score">240</div></div>
+      <div class="top10-item"><img src="https://i.pravatar.cc/100?img=7"><div class="name">karim_pro</div><div class="score">200</div></div>
+    </div>
+  </div>
+
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    const target = new Date("2025-05-20T23:59:59").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = target - now;
+      if (distance < 0) return countdownElement.innerText = "انتهى الوقت!";
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElement.innerText = `${d}ي ${h}س ${m}د ${s}ث`;
+    }, 1000);
+  </script>
+</body>
+</html>
